@@ -17,12 +17,13 @@
     </template>
   </my-table>
 
-  <edit-add-form v-model="visible" flag="edit"></edit-add-form>
+  <edit-add-form v-model="visible" :formData="editFormData"></edit-add-form>
 </template>
 <script lang="ts" setup>
 import EditAddForm from "./EditAddForm.vue";
 import { ElMessage, ElMessageBox } from "element-plus";
 import { computed, ref } from "vue";
+import { FData } from "../types";
 import type {
   TableHeader,
   TableData,
@@ -32,11 +33,10 @@ interface Props {
   tableData: TableData;
 }
 const props = defineProps<Props>();
+const editFormData = ref<FData>();
 
-const visible = ref<boolean>(true);
-setTimeout(() => {
-  visible.value = false;
-}, 3000);
+const visible = ref<boolean>(false);
+
 const tableHeader: TableHeader = [
   {
     label: "角色名称",
@@ -65,6 +65,8 @@ const tableObj = computed<TableObj>(() => {
 
 const handleEdit = (row: object) => {
   // show dialog
+  visible.value = true;
+  editFormData.value = row as FData;
 };
 
 const handleDelete = (row: object) => {

@@ -29,6 +29,7 @@ declare module 'vue' {
     ElTableColumn: typeof import('element-plus/es')['ElTableColumn']
     ElTabPane: typeof import('element-plus/es')['ElTabPane']
     ElTabs: typeof import('element-plus/es')['ElTabs']
+    ElTree: typeof import('element-plus/es')['ElTree']
     MyPagination: typeof import('./src/components/pagination/MyPagination.vue')['default']
     MyTable: typeof import('./src/components/table/MyTable.vue')['default']
     MyTableColumn: typeof import('./src/components/table/MyTableColumn.vue')['default']

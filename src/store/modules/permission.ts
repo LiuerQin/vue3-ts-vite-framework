@@ -1,6 +1,6 @@
 import { defineStore } from "pinia";
 import { routesMap, router } from "@/router";
-import type { RoutesMap } from "@/router";
+import type { RoutesMap } from "@/router/types";
 import { addRoutes } from "@/router/routerHelper";
 
 interface MenuApiResItem {

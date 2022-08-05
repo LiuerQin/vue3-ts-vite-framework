@@ -26,12 +26,10 @@ import type { PageData } from "@/components/pagination/types";
 
 interface R {
   role: string;
-  visible: boolean;
   tableData: TableData;
 }
 const r: R = reactive({
   role: "",
-  visible: false,
   tableData: [],
 });
 const pageData: PageData = reactive({
@@ -68,8 +66,8 @@ function handleDownload() {
   // api调用
   console.log("role", r.role);
 }
-function handleAdd() {
-  r.visible = true;
-  console.log("visible", r.visible);
+function handleAdd(formData: any) {
+  // add Api
+  console.log(formData, formData.roleName);
 }
 </script>

@@ -12,20 +12,29 @@
       >
     </div>
   </div>
+
+  <edit-add-form
+    v-model="visible"
+    flag="add"
+    @handleConfirm="handleConfirm"
+  ></edit-add-form>
 </template>
 <script lang="ts" setup>
-import { computed } from "vue";
+import EditAddForm from "./EditAddForm.vue";
+import { computed, ref } from "vue";
 interface Props {
   role: string;
 }
+const props = defineProps<Props>();
 interface Emit {
   (e: "update:role", value: string): void;
   (e: "handleSearch"): void;
   (e: "handleDownload"): void;
-  (e: "handleAdd"): void;
+  (e: "handleAdd", formData: object): void;
 }
-const props = defineProps<Props>();
 const emit = defineEmits<Emit>();
+
+const visible = ref<boolean>(true);
 
 const roleValue = computed({
   get: () => props.role,
@@ -41,7 +50,10 @@ const handleDownload = () => {
   emit("handleDownload");
 };
 const handleAdd = () => {
-  emit("handleAdd");
+  visible.value = true;
+};
+const handleConfirm = (formData: object) => {
+  emit("handleAdd", formData);
 };
 </script>
 
